@@ -3,6 +3,7 @@ import { config } from "dotenv";
 import { CustomError } from "./utils";
 import { errorHandler } from "./middlewares";
 import express, { NextFunction, Request, Response } from "express";
+import { flagsConfig } from "./config";
 
 config();
 
@@ -26,6 +27,23 @@ app.get('/', (_req: Request, res: Response, next: NextFunction) => {
             status: 'success',
             message: 'Server is running'
         });
+    } catch (error) {
+        next(error);
+    }
+});
+
+app.get(`/api/feature-flags/:env/:project`, (req: Request, res: Response, next: NextFunction) => {
+    try {
+        const { env, project } = req.params;
+        if (!env || !project) {
+            throw new CustomError('Environment and project parameters are required.', 400);
+        }
+        const flags = flagsConfig[env as 'development' | 'production']?.[project];
+        if (flags) {
+            res.json({ status: 'success', flags });
+        } else {
+            throw new CustomError('Feature flags not found.', 404);
+        }
     } catch (error) {
         next(error);
     }
