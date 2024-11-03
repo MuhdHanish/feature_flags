@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "target": "es2016", // JavaScript version target
+    "module": "commonjs", // Module system
+    "rootDir": "./server/src", // Source root folder
+    "outDir": "./server/dist",
+    "allowSyntheticDefaultImports": true, // Output folder for compiled files
+    "esModuleInterop": true, // Enable ES module interoperability
+    "forceConsistentCasingInFileNames": true, // Enforce consistent casing in imports
+    "strict": true, // Enable all strict type-checking options
+    "skipLibCheck": true, // Skip type checking of declaration files
+    "noImplicitReturns": true, /* Enable error reporting for codepaths that do not explicitly return in a function. */
+    "noFallthroughCasesInSwitch": true, /* Enable error reporting for fallthrough cases in switch statements. */
+    "noUncheckedIndexedAccess": true /* Include 'undefined' in index signatures for keys with no matching property. */
+  },
+  "include": [
+    "./server/src"
+  ],
+  "exclude": [
+    "node_modules",
+    "./server/dist"
+  ]
+}
