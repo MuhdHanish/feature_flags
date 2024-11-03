@@ -1,7 +1,7 @@
 {
     "watch": [
         "./server/src",
-        ".env*"
+        "./server/.env"
     ],
     "ignore": [
         "./server/dist",
